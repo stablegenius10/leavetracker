@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Fetch leave history data from the database
     async function fetchLeaveHistory() {
         try {
-            const response = await fetch("http://localhost:5555/leave-history");
+            const response = await fetch("http://localhost:3000/leave-history");
             const leaveHistory = await response.json();
             displayLeaveHistory(leaveHistory.reverse()); // Reverse the order of entries
         } catch (error) {
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         try {
             // Send form data to server
-            const response = await fetch("http://localhost:5555/submit", {
+            const response = await fetch("http://localhost:3000/submit", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
