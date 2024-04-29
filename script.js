@@ -22,9 +22,12 @@ document.addEventListener("DOMContentLoaded", function() {
     async function fetchLeaveHistory() {
         try {
             const response = await fetch("https://localhost:3000/leave-history");
-            const leaveHistory = [];
-            leaveHistory = await response.json();
-            displayLeaveHistory(leaveHistory.reverse()); // Reverse the order of entries
+            const fetchHistory = await response.json();
+            const leaveHistory = []; 
+         for (const [key, value] of Object.entries(fetchHistory)) { 
+            leaveHistory.push([`${key}`, `${value}`]); 
+         } 
+            displayLeaveHistory(leaveHistory); // Reverse the order of entries
         } catch (error) {
             console.error("Error fetching leave history:", error);
         }
